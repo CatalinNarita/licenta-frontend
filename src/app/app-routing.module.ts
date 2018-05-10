@@ -3,15 +3,21 @@ import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {LoginActivate} from './login/login.activate';
+import {GalleriesComponent} from './galleries/galleries.component';
+import {GalleryDetailsComponent} from './gallery-details/gallery-details.component';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
-  {path: 'dashboard', component: DashboardComponent, canActivate: [LoginActivate]}
+  {path: 'dashboard', component: DashboardComponent, canActivate: [LoginActivate]},
+  {path: 'galleries', component: GalleriesComponent, canActivate: [LoginActivate]},
+  {path: 'gallery-details/:id', component: GalleryDetailsComponent, canActivate: [LoginActivate]}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

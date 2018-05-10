@@ -2,3 +2,21 @@
 .btn-primary:disabled {
   cursor: not-allowed;
 }
+
+.loading-gif {
+  width: 50%;
+  height: 50%;
+}
+
+form.form-signin > span {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+a.active {
+  color: blue;
+}
+
+li.active {
+  background-color: white;
+}
