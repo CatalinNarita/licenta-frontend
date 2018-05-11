@@ -12,7 +12,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [LoginActivate]},
   {path: 'galleries', component: GalleriesComponent, canActivate: [LoginActivate]},
-  {path: 'gallery-details/:id', component: GalleryDetailsComponent, canActivate: [LoginActivate]}
+  {path: 'galleries/:id', component: GalleryDetailsComponent, canActivate: [LoginActivate]},
+  {path: '**', component: PageNotFoundComponent, canActivate: [LoginActivate]}
 ];
 
 @NgModule({

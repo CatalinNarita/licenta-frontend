@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {GalleriesService} from '../galleries/galleries.service';
 
 @Component({
   selector: 'app-gallery-details',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GalleryDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute,
+              private galleriesService: GalleriesService,
+              private router: Router) {
+  }
+
+  id: number;
+  notFound = false;
 
   ngOnInit() {
+    this.id = this.route.snapshot.params['id'];
+    this.getArtifactsByGalleryId(this.id);
+  }
+
+  getArtifactsByGalleryId(id: number) {
+    this.galleriesService.getArtifactsByGalleryId(id)
+      .subscribe(data => {
+          this.notFound = false;
+          console.log(data);
+        },
+        error => {
+          if (error.status === 500) {
+            this.notFound = true;
+          }
+        });
   }
 
 }

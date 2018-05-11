@@ -11,6 +11,7 @@ export class GalleriesComponent implements OnInit {
 
   galleries;
   showTable = false;
+  selectedGallery;
 
   constructor(private galleriesService: GalleriesService,
               private router: Router) {
@@ -29,7 +30,28 @@ export class GalleriesComponent implements OnInit {
   }
 
   goToGalleryDetails(id: number) {
-    this.router.navigate(['gallery-details', id]);
+    this.router.navigate(['galleries', id]);
   }
+
+  enableEditMode(gallery) {
+    gallery.editable = true;
+    this.selectedGallery = gallery;
+  }
+
+  disableEditMode(gallery) {
+    gallery.editable = false;
+    let gallerytoBeUpdated = {
+      id: this.selectedGallery.id,
+      name: this.selectedGallery.name,
+      category: this.selectedGallery.category,
+    };
+    this.galleriesService.updateGallery(gallerytoBeUpdated)
+      .subscribe(data => console.log(data)),
+      error => console.log(error);
+  }
+
+  deleteGallery(galleryId: number) {}
+
+
 
 }
