@@ -15,6 +15,7 @@ import {GalleriesService} from './galleries/galleries.service';
 import {BearerTokenService} from './bearer-token.service';
 import { GalleryDetailsComponent } from './gallery-details/gallery-details.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {MatListModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatListModule
   ],
   providers: [
     LoginService,

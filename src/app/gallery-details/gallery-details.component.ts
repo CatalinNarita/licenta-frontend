@@ -16,6 +16,7 @@ export class GalleryDetailsComponent implements OnInit {
 
   id: number;
   notFound = false;
+  artifacts;
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
@@ -26,7 +27,7 @@ export class GalleryDetailsComponent implements OnInit {
     this.galleriesService.getArtifactsByGalleryId(id)
       .subscribe(data => {
           this.notFound = false;
-          console.log(data);
+          this.artifacts = data;
         },
         error => {
           if (error.status === 500) {
