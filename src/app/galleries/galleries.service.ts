@@ -9,6 +9,7 @@ const GET_GALLERY_BY_ID_URL = BASE_URL + '/gallery/getById/';
 
 const GET_ARTIFACTS_BY_GALLERY_ID = BASE_URL + '/secure/artifact/getByGalleryId/';
 const UPDATE_GALLERY_URL = BASE_URL + '/gallery/update';
+const DELETE_GALLERY_URL = BASE_URL + '/gallery/delete/'
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,10 @@ export class GalleriesService {
 
   updateGallery(gallery): Observable<any> {
     return this.http.put(UPDATE_GALLERY_URL, gallery, {headers: this.tokenService.getBearerTokenAuthorizationHeader()});
+  }
+
+  deleteGalleryById(galleryId: number): Observable<any> {
+    return this.http.delete(DELETE_GALLERY_URL + galleryId, {headers: this.tokenService.getBearerTokenAuthorizationHeader()});
   }
 
 }

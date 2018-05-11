@@ -12,12 +12,19 @@
   <tr *ngFor="let gallery of galleries">
     <td *ngIf="!gallery.editable">{{gallery.name}}</td>
     <td *ngIf="gallery.editable"><input type="text" [(ngModel)]="gallery.name"></td>
-    <td *ngIf="!gallery.editable">{{gallery.category}}</td>
-    <td *ngIf="gallery.editable"><input type="text" [(ngModel)]="gallery.category"></td>
-    <td><button type="button" class="btn btn-primary" (click)="goToGalleryDetails(gallery.id)">Details</button></td>
-    <td *ngIf="!gallery.editable"><button type="button" class="btn btn-primary" (click)="enableEditMode(gallery)">Edit</button></td>
-    <td *ngIf="gallery.editable"><button type="button" class="btn btn-primary" (click)="disableEditMode(gallery)">Save</button></td>
-    <td><button type="button" class="btn btn-primary" (click)="deleteGallery(gallery.id)">Delete</button></td>
+    <td>{{gallery.category}}</td>
+    <td>
+      <button type="button" class="btn btn-primary" (click)="goToGalleryDetails(gallery.id)">Details</button>
+    </td>
+    <td *ngIf="!gallery.editable">
+      <button type="button" class="btn btn-primary" (click)="enableEditMode(gallery)">Edit</button>
+    </td>
+    <td *ngIf="gallery.editable">
+      <button type="button" class="btn btn-primary" (click)="disableEditMode(gallery)">Save</button>
+    </td>
+    <td>
+      <button type="button" class="btn btn-primary" (click)="deleteGallery(gallery.id)">Delete</button>
+    </td>
   </tr>
   </tbody>
 </table>

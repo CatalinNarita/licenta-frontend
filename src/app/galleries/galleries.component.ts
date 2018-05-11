@@ -12,6 +12,7 @@ export class GalleriesComponent implements OnInit {
   galleries;
   showTable = false;
   selectedGallery;
+  categories = ['SCIENCE', 'HISTORY', 'NATURE'];
 
   constructor(private galleriesService: GalleriesService,
               private router: Router) {
@@ -46,12 +47,15 @@ export class GalleriesComponent implements OnInit {
       category: this.selectedGallery.category,
     };
     this.galleriesService.updateGallery(gallerytoBeUpdated)
-      .subscribe(data => console.log(data)),
-      error => console.log(error);
+      .subscribe(data => console.log(data),
+        error => console.log(error));
   }
 
-  deleteGallery(galleryId: number) {}
-
+  deleteGallery(galleryId: number) {
+    this.galleriesService.deleteGalleryById(galleryId)
+      .subscribe(data => console.log(data),
+        error => console.log(error));
+  }
 
 
 }
