@@ -7,6 +7,6 @@
            [(ngModel)]="password"/>
     <div class="alert alert-danger" *ngIf="invalidCredentials && !loading">Invalid username or password!</div>
     <span *ngIf="loading"><img class="loading-gif" src="../../assets/images/loaderLogin.gif"></span>
-    <button class="btn btn-lg btn-primary btn-block" [disabled]="f.invalid" type="submit" (click)="requestAccessToken()">Login</button>
+    <button class="btn btn-lg btn-primary btn-block" [disabled]="f.invalid" type="submit" (click)="doLogin()">Login</button>
   </form>
 </div>
